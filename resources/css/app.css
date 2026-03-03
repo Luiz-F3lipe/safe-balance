@@ -18,9 +18,8 @@
 */
 
 /** daisyUI */
-@plugin "daisyui" {
-    themes: light --default, dark --prefersdark;
-}
+@plugin "daisyui";
+
 
 /* maryUI */
 @source "../../vendor/robsontenorio/mary/src/View/Components/**/*.php";
@@ -34,11 +33,11 @@
 */
 
 .mary-table-pagination span[aria-current="page"] > span {
-    @apply bg-primary text-base-100
+    @apply bg-emerald-500 text-white dark:bg-emerald-600;
 }
 
 .mary-table-pagination button {
-    @apply cursor-pointer
+    @apply cursor-pointer hover:bg-emerald-50 dark:hover:bg-emerald-900/30;
 }
 
 /**

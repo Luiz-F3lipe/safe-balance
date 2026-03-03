@@ -38,7 +38,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function accounts(): BelongsTo
+    public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
     }
