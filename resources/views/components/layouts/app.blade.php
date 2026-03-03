@@ -72,7 +72,7 @@
         </x-slot:sidebar>
 
         {{-- The `$slot` goes here --}}
-        <x-slot:content>
+        <x-slot:content class="p-2 sm:p-0 lg:p-6">
             {{ $slot }}
         </x-slot:content>
     </x-main>

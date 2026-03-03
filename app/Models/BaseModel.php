@@ -14,7 +14,7 @@ class BaseModel extends Model
     {
         static::addGlobalScope(new AccountScope());
 
-        static::creating(function (Model $model) {
+        static::creating(function (Model $model): void {
             if (Auth::check()) {
                 $model->account_id = Auth::user()->account_id;
             }
