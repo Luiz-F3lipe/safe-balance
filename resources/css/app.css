@@ -40,3 +40,13 @@
 .mary-table-pagination button {
     @apply cursor-pointer
 }
+
+/**
+* Input placeholder alignment fix
+*/
+input::placeholder,
+textarea::placeholder {
+    line-height: normal;
+    vertical-align: middle;
+    transform: translateY(0);
+}
