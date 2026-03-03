@@ -54,11 +54,11 @@
                     <x-menu-separator />
                 @endif
 
-                <x-menu-item title="Dashboard" icon="lucide.chart-column-big" class="hover:bg-linear-to-br hover:from-emerald-500 hover:to-emerald-600 hover:text-white dark:hover:from-emerald-600 dark:hover:to-emerald-700 transition-all" />
-                <x-menu-item title="Transações" icon="lucide.dollar-sign" link="/transactions" class="hover:bg-linear-to-br hover:from-emerald-500 hover:to-emerald-600 hover:text-white dark:hover:from-emerald-600 dark:hover:to-emerald-700 transition-all" />
-                <x-menu-item title="Contatos" icon="lucide.contact" link="/contacts" class="hover:bg-linear-to-br hover:from-emerald-500 hover:to-emerald-600 hover:text-white dark:hover:from-emerald-600 dark:hover:to-emerald-700 transition-all" />
-                <x-menu-item title="Categorias" icon="lucide.tag" link="/categories" class="hover:bg-linear-to-br hover:from-emerald-500 hover:to-emerald-600 hover:text-white dark:hover:from-emerald-600 dark:hover:to-emerald-700 transition-all" />
-                <x-menu-item title="Usuários" icon="lucide.users" link="/users" class="hover:bg-linear-to-br hover:from-emerald-500 hover:to-emerald-600 hover:text-white dark:hover:from-emerald-600 dark:hover:to-emerald-700 transition-all" />
+                <x-menu-item title="Dashboard" icon="lucide.chart-column-big"  />
+                <x-menu-item title="Transações" icon="lucide.dollar-sign" link="/transactions"  />
+                <x-menu-item title="Contatos" icon="lucide.contact" link="/contacts"  />
+                <x-menu-item title="Categorias" icon="lucide.tag" link="/categories"  />
+                <x-menu-item title="Usuários" icon="lucide.users" link="/users"  />
             </x-menu>
 
             {{-- THEME TOGGLE - Fixed at bottom --}}
