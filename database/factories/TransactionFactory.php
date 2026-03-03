@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Database\Factories;
 
 use App\Models\Account;
@@ -20,11 +22,11 @@ class TransactionFactory extends Factory
     public function definition(): array
     {
         return [
-            'account_id' => Account::factory(),
-            'category_id' => Category::factory(),
-            'contact_id' => Contact::factory(),
-            'description' => $this->faker->sentence(3),
-            'amount' => $this->faker->randomFloat(2, 1, 1000),
+            'account_id'   => Account::factory(),
+            'category_id'  => Category::factory(),
+            'contact_id'   => Contact::factory(),
+            'description'  => $this->faker->sentence(3),
+            'amount'       => $this->faker->randomFloat(2, 1, 1000),
             'installments' => $this->faker->numberBetween(1, 12),
         ];
     }

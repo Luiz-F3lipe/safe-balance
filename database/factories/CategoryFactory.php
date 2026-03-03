@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -18,7 +20,7 @@ class CategoryFactory extends Factory
     {
         return [
             'description' => $this->faker->word(),
-            'type' => $this->faker->randomElement(['income', 'expense']),
+            'type'        => $this->faker->randomElement(['income', 'expense']),
         ];
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Database\Factories;
 
 use App\Models\Transaction;
@@ -19,9 +21,9 @@ class TransactionInstallmentsFactory extends Factory
     {
         return [
             'transaction_id' => Transaction::factory(),
-            'installment' => $this->faker->numberBetween(1, 12),
-            'amount' => $this->faker->randomFloat(2, 1, 1000),
-            'due_date' => $this->faker->dateTimeBetween('now', '+1 year'),
+            'installment'    => $this->faker->numberBetween(1, 12),
+            'amount'         => $this->faker->randomFloat(2, 1, 1000),
+            'due_date'       => $this->faker->dateTimeBetween('now', '+1 year'),
         ];
     }
 }
