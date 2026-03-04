@@ -70,7 +70,7 @@
 
                 <x-button
                     class="btn-xs btn-ghost text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/30"
-                    wire:click="$dispatch('transactions::destroy', { installment: {{ $installment->id }} })"
+                    wire:click="$dispatch('transactions::destroy', { id: {{ $installment->transaction->id }} })"
                     icon="lucide.trash"
                     spinner
                     tooltip="Excluir"

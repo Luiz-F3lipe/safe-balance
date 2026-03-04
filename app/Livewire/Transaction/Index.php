@@ -131,6 +131,11 @@ class Index extends Component
         return $this->totalIncome - $this->totalExpense;
     }
 
+    public function updatedSelectedMonth(): void
+    {
+        unset($this->totalIncome, $this->totalExpense, $this->balance);
+    }
+
     public function cleanerFilter(): void
     {
         $this->search        = null;

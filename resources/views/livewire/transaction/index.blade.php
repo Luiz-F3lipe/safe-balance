@@ -1,6 +1,6 @@
 <div class="p-4 sm:p-6">
     {{-- Cartão de Resumo da Conta --}}
-    <div class="mb-6">
+    <div class="mb-6" wire:key="account-card-{{ $selectedMonth }}">
         <x-transaction.account-card
             :account-name="$this->currentAccount?->name"
             :total-income="$this->totalIncome"
@@ -77,4 +77,6 @@
             </div>
         @endforelse
     </div>
+
+    <livewire:transaction.destroy :key="uniqid()" />
 </div>
