@@ -54,7 +54,7 @@
                     <x-menu-separator />
                 @endif
 
-                <x-menu-item title="Dashboard" icon="lucide.chart-column-big"  />
+                <x-menu-item title="Dashboard" icon="lucide.chart-column-big" link="/" />
                 <x-menu-item title="Transações" icon="lucide.dollar-sign" link="/transactions"  />
                 <x-menu-item title="Contatos" icon="lucide.contact" link="/contacts"  />
                 <x-menu-item title="Categorias" icon="lucide.tag" link="/categories"  />

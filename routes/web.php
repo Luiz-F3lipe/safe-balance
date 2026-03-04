@@ -5,14 +5,12 @@ declare(strict_types = 1);
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Category\Index as CategoryIndex;
-
 use App\Livewire\Contact\Index as ContactIndex;
+use App\Livewire\Dashboard\Index as DashboardIndex;
 use App\Livewire\Transaction\Create as TransactionCreate;
 use App\Livewire\Transaction\Edit as TransactionEdit;
 use App\Livewire\Transaction\Index as TransactionIndex;
 use App\Livewire\User\Index as UserIndex;
-
-use App\Livewire\Welcome;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +31,7 @@ Route::get('/register', Register::class)
     ->middleware('guest');
 
 Route::group(['middleware' => 'auth'], function (): void {
-    Route::get('/', Welcome::class)->name('home');
+    Route::get('/', DashboardIndex::class)->name('home');
 
     Route::get('/users', UserIndex::class)->name('users.index');
     Route::get('/categories', CategoryIndex::class)->name('categories.index');
