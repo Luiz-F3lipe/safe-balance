@@ -19,9 +19,9 @@ class Destroy extends Component
     public ?Contact $contact = null;
 
     #[On('contacts::destroy')]
-    public function openModal(Contact $contact): void
+    public function openModal(int $id): void
     {
-        $this->contact   = $contact;
+        $this->contact   = Contact::findOrFail($id);
         $this->showModal = true;
     }
 

@@ -45,7 +45,7 @@
                 <div class="flex items-center gap-1 justify-center">
                     <x-button
                         class="btn-sm btn-ghost text-blue-600 hover:text-blue-800 hover:bg-blue-50"
-                        wire:click="$dispatch('categories::edit', { category: {{ $category }} })"
+                        wire:click="$dispatch('categories::edit', { id: {{ $category->id }} })"
                         icon="lucide.pencil"
                         spinner
                         tooltip="Editar"
@@ -53,7 +53,7 @@
 
                     <x-button
                         class="btn-sm btn-ghost text-red-600 hover:text-red-800 hover:bg-red-50"
-                        wire:click="$dispatch('categories::destroy', { category: {{ $category }} })"
+                        wire:click="$dispatch('categories::destroy', { id: {{ $category->id }} })"
                         icon="lucide.trash"
                         spinner
                         tooltip="Excluir"

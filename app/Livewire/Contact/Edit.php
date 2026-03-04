@@ -19,9 +19,9 @@ class Edit extends Component
     public Contact $contact;
 
     #[On('contacts::edit')]
-    public function openModal(Contact $contact): void
+    public function openModal(int $id): void
     {
-        $this->contact   = $contact;
+        $this->contact   = Contact::findOrFail($id);
         $this->showModal = true;
         $this->resetValidation();
     }

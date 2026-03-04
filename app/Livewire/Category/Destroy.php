@@ -19,9 +19,9 @@ class Destroy extends Component
     public ?Category $category = null;
 
     #[On('categories::destroy')]
-    public function openModal(Category $category): void
+    public function openModal(int $id): void
     {
-        $this->category  = $category;
+        $this->category  = Category::findOrFail($id);
         $this->showModal = true;
     }
 
