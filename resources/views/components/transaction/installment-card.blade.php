@@ -63,9 +63,8 @@
             <div class="flex items-center gap-0.5 sm:gap-1">
                 <x-button
                     class="btn-xs btn-ghost text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30"
-                    wire:click="$dispatch('transactions::edit', { installment: {{ $installment->id }} })"
+                    link="{{ route('transactions.edit', $installment->transaction->id) }}"
                     icon="lucide.pencil"
-                    spinner
                     tooltip="Editar"
                 />
 

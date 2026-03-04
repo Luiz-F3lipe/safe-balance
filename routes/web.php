@@ -7,6 +7,8 @@ use App\Livewire\Auth\Register;
 use App\Livewire\Category\Index as CategoryIndex;
 
 use App\Livewire\Contact\Index as ContactIndex;
+use App\Livewire\Transaction\Create as TransactionCreate;
+use App\Livewire\Transaction\Edit as TransactionEdit;
 use App\Livewire\Transaction\Index as TransactionIndex;
 use App\Livewire\User\Index as UserIndex;
 
@@ -37,4 +39,6 @@ Route::group(['middleware' => 'auth'], function (): void {
     Route::get('/categories', CategoryIndex::class)->name('categories.index');
     Route::get('/contacts', ContactIndex::class)->name('contacts.index');
     Route::get('/transactions', TransactionIndex::class)->name('transactions.index');
+    Route::get('/transactions/create', TransactionCreate::class)->name('transactions.create');
+    Route::get('/transactions/{id}/edit', TransactionEdit::class)->name('transactions.edit');
 });

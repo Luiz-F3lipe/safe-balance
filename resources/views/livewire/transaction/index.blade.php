@@ -15,7 +15,7 @@
         <x-button
             icon="o-plus"
             class="btn-success w-full text-white shadow-md hover:shadow-lg transition-shadow"
-            wire:click="$dispatch('transactions::create')"
+            link="{{ route('transactions.create') }}"
         >
             Nova Transação
         </x-button>
@@ -77,9 +77,4 @@
             </div>
         @endforelse
     </div>
-
-    {{-- Modais (quando criar os componentes) --}}
-    {{-- <livewire:transaction.create :key="uniqid()" /> --}}
-    {{-- <livewire:transaction.edit :key="uniqid()" /> --}}
-    {{-- <livewire:transaction.destroy :key="uniqid()" /> --}}
 </div>
