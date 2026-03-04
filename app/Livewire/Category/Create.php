@@ -18,16 +18,19 @@ class Create extends Component
 
     public ?Category $category = null;
 
+    public bool $otherEvent = false;
+
     public array $typeOptions = [
         ['id' => 'income', 'name' => 'Receitas'],
         ['id' => 'expense', 'name' => 'Despesas'],
     ];
 
     #[On('categories::create')]
-    public function openModal(): void
+    public function openModal(bool $otherEvent = false): void
     {
         $this->category       = new Category();
         $this->category->type = 'expense';
+        $this->otherEvent     = $otherEvent;
 
         $this->showModal = true;
     }
@@ -57,10 +60,14 @@ class Create extends Component
 
         $this->category->save();
 
-        $this->closeModal();
+        if ($this->otherEvent) {
+            $this->dispatch('categories::created', categoryId: $this->category->id)->to('transaction.form');
+        } else {
+            $this->dispatch('categories::refresh');
+            $this->success('Categoria criada com sucesso!');
+        }
 
-        $this->dispatch('categories::refresh');
-        $this->success('Categoria criada com sucesso!');
+        $this->closeModal();
     }
 
     public function closeModal(): void

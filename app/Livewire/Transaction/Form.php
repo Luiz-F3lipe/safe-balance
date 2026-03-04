@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Mary\Traits\Toast;
 
@@ -26,6 +27,14 @@ class Form extends Component
     public int $installments = 1;
 
     public ?string $firstDueDate = null;
+
+    public string $categorySearch = '';
+
+    public string $contactSearch = '';
+
+    public bool $categoryDropdownOpen = false;
+
+    public bool $contactDropdownOpen = false;
 
     public function mount(?int $transactionId = null): void
     {
@@ -62,6 +71,88 @@ class Form extends Component
         return Contact::where('account_id', Auth::user()->account_id)
             ->orderBy('name')
             ->get();
+    }
+
+    #[Computed]
+    public function filteredCategories(): Collection
+    {
+        $query = Category::where('account_id', Auth::user()->account_id);
+
+        if ($this->categorySearch) {
+            $query->where('description', 'like', '%' . $this->categorySearch . '%');
+        }
+
+        return $query->orderBy('description')->get();
+    }
+
+    #[Computed]
+    public function filteredContacts(): Collection
+    {
+        $query = Contact::where('account_id', Auth::user()->account_id);
+
+        if ($this->contactSearch) {
+            $query->where('name', 'like', '%' . $this->contactSearch . '%');
+        }
+
+        return $query->orderBy('name')->get();
+    }
+
+    #[Computed]
+    public function selectedCategory(): ?Category
+    {
+        return $this->transaction->category_id
+            ? Category::find($this->transaction->category_id)
+            : null;
+    }
+
+    #[Computed]
+    public function selectedContact(): ?Contact
+    {
+        return $this->transaction->contact_id
+            ? Contact::find($this->transaction->contact_id)
+            : null;
+    }
+
+    public function selectCategory(int $categoryId): void
+    {
+        $this->transaction->category_id = $categoryId;
+        $this->categoryDropdownOpen     = false;
+        $this->categorySearch           = '';
+    }
+
+    public function clearCategory(): void
+    {
+        $this->transaction->category_id = null;
+    }
+
+    public function selectContact(int $contactId): void
+    {
+        $this->transaction->contact_id = $contactId;
+        $this->contactDropdownOpen     = false;
+        $this->contactSearch           = '';
+    }
+
+    public function clearContact(): void
+    {
+        $this->transaction->contact_id = null;
+    }
+
+    #[On('categories::created')]
+    public function onCategoryCreated(int $categoryId): void
+    {
+        $this->transaction->category_id = $categoryId;
+        unset($this->categories);
+        unset($this->filteredCategories);
+        unset($this->selectedCategory);
+    }
+
+    #[On('contacts::created')]
+    public function onContactCreated(int $contactId): void
+    {
+        $this->transaction->contact_id = $contactId;
+        unset($this->contacts);
+        unset($this->filteredContacts);
+        unset($this->selectedContact);
     }
 
     #[Computed]

@@ -18,10 +18,13 @@ class Create extends Component
 
     public ?Contact $contact = null;
 
+    public bool $otherEvent = false;
+
     #[On('contacts::create')]
-    public function openModal(): void
+    public function openModal(bool $otherEvent = false): void
     {
-        $this->contact = new Contact();
+        $this->contact    = new Contact();
+        $this->otherEvent = $otherEvent;
 
         $this->showModal = true;
     }
@@ -49,8 +52,12 @@ class Create extends Component
 
         $this->contact->save();
 
-        $this->success('Contato criado com sucesso!');
-        $this->dispatch('contacts::refresh');
+        if ($this->otherEvent) {
+            $this->dispatch('contacts::created', contactId: $this->contact->id)->to('transaction.form');
+        } else {
+            $this->dispatch('contacts::refresh');
+            $this->success('Contato criado com sucesso!');
+        }
 
         $this->closeModal();
     }

@@ -15,4 +15,8 @@
 
     {{-- Form Component --}}
     <livewire:transaction.form />
+
+    {{-- Modals --}}
+    <livewire:contact.create :key="uniqid()" />
+    <livewire:category.create :key="uniqid()" />
 </div>
