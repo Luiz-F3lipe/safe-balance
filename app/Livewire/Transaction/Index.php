@@ -70,7 +70,7 @@ class Index extends Component
                 ->whereMonth('due_date', $this->selectedMonth);
         }
 
-        // Busca por descrição ou contato
+        // Busca por descrição, contato ou valor
         if ($this->search) {
             $query->where(function ($q) {
                 $q->whereHas('transaction', function ($transactionQuery) {
@@ -78,11 +78,12 @@ class Index extends Component
                         ->orWhereHas('contact', function ($contactQuery) {
                             $contactQuery->where('name', 'like', '%' . $this->search . '%');
                         });
-                });
+                })
+                    ->orWhere('amount', 'like', '%' . $this->search . '%');
             });
         }
 
-        return $query->orderBy('due_date', 'desc')->get();
+        return $query->orderBy('id', 'desc')->get();
     }
 
     #[Computed]
